@@ -1,0 +1,7 @@
+# .gitignore
+
+# Dependencies
+backend/node_modules
+
+# npm package lock file
+backend/package-lock.json
