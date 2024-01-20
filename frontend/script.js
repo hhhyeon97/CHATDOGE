@@ -17,7 +17,9 @@ async function fetchFortune() {
         }
 
         const data = await response.json();
-        return data;
+        console.log('Response:', data.assistant);
+
+        return data.assistant; // Assuming the server response has a structure like { "assistant": "Fortune message" }
     } catch (error) {
         console.error('Error fetching fortune:', error.message);
         throw error;
@@ -58,5 +60,5 @@ function sendMessage() {
     }
 }
 
-// Call the main function when the page loads
+
 main();
