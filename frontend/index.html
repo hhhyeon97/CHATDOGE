@@ -4,52 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyFortune</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <button onclick="fetchFortune()">요청하기</button>
+    <div class="chat-container">
+        <div class="chat-box" id="chatBox">
+            <!-- Chat messages will be displayed here -->
+            안녕하세요 MyFortune 입니다 &#127911;
+        </div>
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="메세지를 입력하세요...">
+            <button onclick="sendMessage()" id="sendButton">Send</button>
+        </div>
+    </div>
 
-    <script>
-        async function fetchFortune() {
-  const url = 'http://localhost:3000/fortuneTell';
-
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // Add any other headers if needed
-      },
-      // You can pass data in the body if required
-       body: JSON.stringify({ key: 'value' }),
-    });
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log('Fortune:', data);
-    return data;
-  } catch (error) {
-    console.error('Error fetching fortune:', error.message);
-    throw error;
-  }
-}
-
-// Example usage
-async function main() {
-  try {
-    const fortune = await fetchFortune();
-    // Do something with the received fortune data
-  } catch (error) {
-    // Handle errors
-    console.error('Something went wrong:', error.message);
-  }
-}
-
-// Call the main function
-main();
-    </script>
+    <script src="script.js"></script>      
 </body>
 </html>
