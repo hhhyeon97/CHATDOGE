@@ -48,7 +48,6 @@
         }
 
         .chat-container #title {
-            position : fixed;
-            top: 35px;
+            padding: 10px;
             text-align: center;
         }
