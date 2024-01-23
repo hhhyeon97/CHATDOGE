@@ -21,6 +21,10 @@ function start(){
 }
 
 async function sendMessage() {
+
+    // 로딩 스피너 보여주기
+    document.getElementById('loader').style.display = "block";
+
     // 사용자 메세지 가져옴
     const messageInput = document.getElementById('messageInput');
     const message = messageInput.value;
@@ -56,9 +60,15 @@ async function sendMessage() {
             throw new Error('Request failed with status '+response.status);
         }
         const data = await response.json();        
-        console.log('Response:', data.assistant);
+        //console.log('Response:', data.assistant);
 
+        //로딩 스피너 숨기기
+        document.getElementById('loader').style.display = "none";
 
+        assistantMessages.push(data.assistant);
+        console.log('Response:', data);
+
+        
         //채팅 말풍선에 챗gpt 응답 출력
          const botBubble = document.createElement('div');
          botBubble.className = 'chat-bubble bot-bubble';
