@@ -1,18 +1,28 @@
+
+//변수 생성
+let userMessages = [];
+let assistantMessages = [];
+
+
 async function sendMessage() {
+    // 사용자 메세지 가져옴
     const messageInput = document.getElementById('messageInput');
     const message = messageInput.value;
 
-
-    //Display user message
+    //채팅 말풍선에 사용자의 메세지 출력
     const userBubble = document.createElement('div');
     userBubble.className = 'chat-bubble user-bubble';
     userBubble.textContent = message;
     document.getElementById('fortuneResponse').appendChild(userBubble);
 
-    //Clear input field
+    //userMessages에 사용자의 메세지 저장
+    userMessages.push(messageInput.value);
+
+
+    //입력 필드 초기화
     messageInput.value = '';
 
-    //Send message to the server and get the fortune response
+    //백엔드 서버에 메세지를 보내고 응답 출력
     try {
 
         const response = await fetch('http://localhost:3000/fortuneTell', {
@@ -20,7 +30,10 @@ async function sendMessage() {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({name: 'hyeon'})// replace with your desired data
+            body: JSON.stringify({
+                userMessages: userMessages,
+                assistantMessages: assistantMessages,
+            })
         });
         if (!response.ok){
             throw new Error('Request failed with status '+response.status);
@@ -29,11 +42,14 @@ async function sendMessage() {
         console.log('Response:', data.assistant);
 
 
-        //Display bot response(fortune) in a chat bubble
+        //채팅 말풍선에 챗gpt 응답 출력
          const botBubble = document.createElement('div');
          botBubble.className = 'chat-bubble bot-bubble';
          botBubble.textContent = data.assistant;
          document.getElementById('fortuneResponse').appendChild(botBubble);
+
+        //assistantMessages에 챗gpt 메세지 저장
+        assistantMessages.push(data.assistant);
 
 
     }catch(error){
