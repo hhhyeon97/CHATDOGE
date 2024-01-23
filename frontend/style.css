@@ -2,7 +2,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #fff;
         }
 
 
@@ -51,3 +51,33 @@
             padding: 10px;
             text-align: center;
         }
+
+
+        @font-face {
+            font-family: 'Cafe24Supermagic-Bold-v1.0';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .intro-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .intro-container h2{
+            font-family: 'Cafe24Supermagic-Bold-v1.0';
+        }
+        .intro-container img{
+            width: 50%;
+            min-width: 300px;
+        }
+
+       .intro-container button{
+         border-radius: 6px;
+         padding: 10px;
+         background-color: #fff;
+         border : 2px solid gray;
+       }

@@ -3,6 +3,22 @@
 let userMessages = [];
 let assistantMessages = [];
 
+let myDateTime = '';
+
+function start(){
+    const date = document.getElementById('date').value;
+    const hour = document.getElementById('hour').value;
+    if(date === ''){
+        alert('생년월일을 입력해 주세요.');
+        return;
+    }
+    myDateTime = date + hour;
+    
+    document.getElementById("intro").style.display = "none";
+    document.getElementById("chat").style.display = "block";
+
+    //console.log(myDateTime);
+}
 
 async function sendMessage() {
     // 사용자 메세지 가져옴
@@ -31,6 +47,7 @@ async function sendMessage() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
+                myDateTime: myDateTime,
                 userMessages: userMessages,
                 assistantMessages: assistantMessages,
             })
