@@ -45,10 +45,11 @@ async function sendMessage() {
     //백엔드 서버에 메세지를 보내고 응답 출력
     try {
 
-        const response = await fetch('http://localhost:3000/fortuneTell', {
+        const response = await fetch('https://totqmestykrevynhnnuolqpsju0ebsbo.lambda-url.ap-northeast-2.on.aws/fortuneTell', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                //'Origin': 'https://myfortune.pages.dev'  // 슬래시 제거
             },
             body: JSON.stringify({
                 myDateTime: myDateTime,

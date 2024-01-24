@@ -1,16 +1,27 @@
+
 const OpenAI = require('openai');
 
 const openai = new OpenAI({
-  apiKey: "my key!",
+  apiKey: "my key..",
 });
 
 
+//serverless-http 설정
+const serverless = require('serverless-http')
+
+// express 설정
 const express = require('express')
 const app = express()
 
 // CORS 문제 해결
 const cors = require('cors')
-app.use(cors())
+//app.use(cors())
+
+let corsOptions = {
+  origin: 'https://myfortune.pages.dev',
+  credentials: true
+}
+app.use(cors(corsOptions));
 
 
 // POST 요청 받을 수 있게 만듦
@@ -19,6 +30,9 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 
 // POST 요청
 app.post('/fortuneTell',  async function (req, res) {
+
+  res.header('Access-Control-Allow-Origin', 'https://myfortune.pages.dev');
+  res.header('Access-Control-Allow-Credentials', true);
 
   // 프런트엔드에서 보낸 메세지 출력
   let { myDateTime, userMessages, assistantMessages } = req.body
@@ -61,4 +75,6 @@ app.post('/fortuneTell',  async function (req, res) {
 
 });
 
-app.listen(3000)
+module.exports.handler = serverless(app)
+
+//app.listen(3000)
