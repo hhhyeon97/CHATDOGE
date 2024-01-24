@@ -44,16 +44,11 @@
         <button id="fortuneBtn" onclick="start()">오늘의 운세 보러 가기</button>
     </div>
 
-    <!-- 광고 배너 -->
-    <ins class="kakao_ad_area" style="display:none;"
-    data-ad-unit = "DAN-kiTvnhMYJeaNgeoV"
-    data-ad-width = "320"
-    data-ad-height = "100"></ins>
-    <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
-
+    
 
     <div id="chat" class="chat-container" style="display: none;">
-        <span id="title">안녕하세요 MyFortune 입니다 &#127911; </span><br>
+        <span id="title">안녕하세요 MyFortune 입니다 &#127911;</span><br>
+        <span style="padding: 10px 10px;">오늘의 운세를 물어보세요 !</span><br>
 
         <div class="chat-bubble user-bubble">
             <!-- Chat messages will be displayed here -->
@@ -70,7 +65,18 @@
 
             <input type="text" class="chat-input" id="messageInput" placeholder="메세지를 입력하세요...">
             <button class="send-button" onclick="sendMessage()">send</button>
-    </div>
+    
+    
+        </div>
+
+        <!-- 광고 배너 -->
+        <ins class="kakao_ad_area" style="display:none;"
+        data-ad-unit = "DAN-kiTvnhMYJeaNgeoV"
+        data-ad-width = "320"
+        data-ad-height = "100"></ins>
+        <script type="text/javascript" src="//t1.daumcdn.net/kas/static/ba.min.js" async></script>
+
+
     <script src="script.js"></script>      
 </body>
 </html>

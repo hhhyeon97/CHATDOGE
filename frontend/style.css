@@ -1,9 +1,18 @@
+@font-face {
+  font-family: 'NanumSquareNeo-Variable';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_11-01@1.0/NanumSquareNeo-Variable.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'NanumSquareNeo-Variable';
     margin: 0;
     padding: 0;
     background: rgb(238,174,202);
     background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    height: 100vh; /* 화면 전체 높이에 대한 100% 설정 */
 }
 
 
@@ -18,18 +27,27 @@ body {
 }
 
 .chat-container {
-    width: auto;
-    max-width: 600px;
+    min-width: 200px;
+    min-height: 300px;
     margin: 20px auto;
-    background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
     padding : 10px;
+    backdrop-filter: blur(1px);
+    background-color: rgba(255, 255, 255, 0.6);
+    position: relative;
+    top : 20%;
+    text-align: center;
+    margin-bottom : 180px;
+    z-index: 0;
 }
 
 #fortuneBtn{
     border : 2px solid #333;
+    padding: 20px;
+    font-size:20px;
+    font-family: 'NanumSquareNeo-Variable';
 }
 
 #fortuneBtn:hover{
@@ -42,23 +60,28 @@ body {
   padding :5px;
 }
 #messageInput {
-    flex-grow: 1;
+    width: 60%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-right: 10px;
-    margin-top: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
 }
 
 .send-button {
     width: 60px;
     padding: 10px;
-    margin: 10px;
-    background-color:  #84bdf0;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right : 30px;
 }
 
 .chat-container #title {
@@ -143,11 +166,16 @@ body {
         }
       }
 
-      .kakao_ad{
+      .kakao_ad {
         display: flex;
         justify-content: center;
-        align-items: center; /*배너 가운데 정렬*/
+        align-items: center; /* 배너 가운데 정렬 */
+        left: 0;
+        right: 0;
         margin-top: 20px;
         min-width: 350px;
         min-height: 200px;
-      }
+        position: fixed;
+        bottom: 20px;
+        z-index: 1; /* z-index를 추가하여 다른 요소보다 뒤로 보냄 */
+    }
