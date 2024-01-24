@@ -2,7 +2,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fff;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
 }
 
 
@@ -27,6 +28,19 @@ body {
     padding : 10px;
 }
 
+#fortuneBtn{
+    border : 2px solid #333;
+}
+
+#fortuneBtn:hover{
+  cursor: pointer;
+}
+
+#date, #hour {
+  border :2px solid #333;
+  border-radius: 6px;
+  padding :5px;
+}
 #messageInput {
     flex-grow: 1;
     padding: 8px;
@@ -127,4 +141,13 @@ body {
         100% {
           transform: translate(0, 0);
         }
+      }
+
+      .kakao_ad{
+        display: flex;
+        justify-content: center;
+        align-items: center; /*배너 가운데 정렬*/
+        margin-top: 20px;
+        min-width: 350px;
+        min-height: 200px;
       }
