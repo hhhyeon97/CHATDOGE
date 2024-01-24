@@ -39,7 +39,7 @@ body {
     position: relative;
     top : 20%;
     text-align: center;
-    margin-bottom : 180px;
+    margin-bottom : 200px;
     z-index: 0;
 }
 
@@ -48,6 +48,7 @@ body {
     padding: 20px;
     font-size:20px;
     font-family: 'NanumSquareNeo-Variable';
+    margin-bottom: 30px;
 }
 
 #fortuneBtn:hover{
@@ -60,14 +61,14 @@ body {
   padding :5px;
 }
 #messageInput {
-    width: 60%;
+    width: 50%;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-right: 10px;
     position: absolute;
     bottom: 20px;
-    left: 20px;
+    left: 50px;
 }
 
 .send-button {
@@ -172,10 +173,36 @@ body {
         align-items: center; /* 배너 가운데 정렬 */
         left: 0;
         right: 0;
-        margin-top: 20px;
+        margin-top: 30px;
         min-width: 350px;
         min-height: 200px;
-        position: fixed;
-        bottom: 20px;
         z-index: 1; /* z-index를 추가하여 다른 요소보다 뒤로 보냄 */
     }
+
+    /* 미디어 쿼리 */
+
+@media only screen and (min-width: 600px) and (min-height: 900px) {
+  #messageInput {
+    width: 70%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+}
+}
+
+@media only screen and (min-width: 1000px) {
+  #messageInput {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+}
+}

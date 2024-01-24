@@ -16,6 +16,7 @@ function start(){
     
     document.getElementById("intro").style.display = "none";
     document.getElementById("chat").style.display = "block";
+    document.getElementById("ad").style.display = "none";
 
     //console.log(myDateTime);
 }
