@@ -4,205 +4,203 @@
   font-weight: normal;
   font-style: normal;
 }
-
-
-body {
-    font-family: 'NanumSquareNeo-Variable';
-    margin: 0;
-    padding: 0;
-    background: rgb(238,174,202);
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-    height: 100vh; /* 화면 전체 높이에 대한 100% 설정 */
+@font-face {
+  font-family: 'Cafe24Supermagic-Bold-v1.0';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
 }
 
+body {
+  font-family: 'NanumSquareNeo-Variable';
+  background-color: #706c6c;
+  margin: 0;
+}
+
+ /*==========챗 ui 컨테이너=========*/
+ .chat-container {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #928a8a;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+}
+/*상단 메세지*/
+#title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+#subtext1,#subtext2{
+  font-weight: none;
+  font-size: 13px;
+  color: #353436;
+}
+
+/*채팅 메세지 출력 ui */
+.chat-bubble {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 10px;
+}
 
 .user-bubble {
-    float: left;
-    margin-bottom: 15px;
+  background-color: #f0f4f5;
+  color: #000;
+  align-self: flex-end;
 }
 
 .bot-bubble {
-    float: right;
-    margin-bottom: 15px;
+  background-color: #f0f4f5;
+  color: #000;
+  align-self: flex-start;
 }
 
-.chat-container {
-    min-width: 200px;
-    min-height: 300px;
-    margin: 20px auto;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    overflow: hidden;
-    padding : 10px;
-    backdrop-filter: blur(1px);
-    background-color: rgba(255, 255, 255, 0.6);
-    position: relative;
-    top : 20%;
-    text-align: center;
-    margin-bottom : 200px;
-    z-index: 0;
+/*사용자 채팅 입력 프롬프트 */
+.chat-input {
+  width: 70%;
+  padding: 8px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
 }
 
-#fortuneBtn{
-    border : 2px solid #333;
-    padding: 20px;
-    font-size:20px;
-    font-family: 'NanumSquareNeo-Variable';
-    margin-bottom: 30px;
+
+/*전송 버튼
+.send-button{
+  padding: 8px 12px;
+  background-color: #a9a7b8;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+*/
+/*전송 아이콘 */
+i {
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+  position:relative;
+  top: 2px;
 }
 
-#fortuneBtn:hover{
+ /* 로딩 스피너 추가 */
+ #loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.load-wrapp {
+  width: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.load-wrapp .line {
+  width: 13px;
+  height: 13px;
+  border-radius: 13px;
+  background: rgb(196, 174, 231);
+  background: radial-gradient(circle, rgb(196, 174, 231) 0%, rgb(235, 225, 185) 100%);
+}
+
+.load-wrapp .line:nth-last-child(1) {
+  animation: loadingC 0.8s 0.1s linear infinite;
+}
+
+.load-wrapp .line:nth-last-child(2) {
+  animation: loadingC 0.8s 0.3s linear infinite;
+}
+
+.load-wrapp .line:nth-last-child(3) {
+  animation: loadingC 0.8s 0.4s linear infinite;
+}
+
+@keyframes loadingC {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 15px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/*광고 배너*/
+#ad {
+  margin-bottom: 20px;
+}
+
+/*=========시작 페이지 컨테이너=========*/
+.intro-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  position: relative;
+  bottom: 50px;
+}
+.intro-container img{
+  width: 50%;
+  min-width: 300px;
+}
+
+/*start 버튼 */
+.intro-container button {
+border-radius: 6px;
+width : 200px;
+padding: 20px;
+border : 2px solid white;
+margin-bottom : -30px;
+font-family: 'NanumSquareNeo-Variable';
+font-size: 20px;
+transition: 0.5s;
+background-size: 200% auto;
+}
+.startBtn:hover {
+  background-position: right center;
+  cursor: pointer;
+}
+
+.startBtn {
+  background-image: linear-gradient(to right, #aba5e8 0%, #e7ebbc 51%, #aba5e8 100%);
+  
+}
+
+/*date 안에 있는 달력 아이콘 조절*/
+input[type="date"]::-webkit-calendar-picker-indicator {
+  font-size: 20px;
+  padding: 5px;
+  margin-right: 5px;
   cursor: pointer;
 }
 
 #date, #hour {
-  border :2px solid #333;
+  border :2px solid white;
   border-radius: 6px;
   padding :5px;
+  position: relative;
+  bottom : 20px;
 }
-#messageInput {
-    width: 50%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 10px;
-    position: absolute;
-    bottom: 20px;
-    left: 50px;
+#date {
+  padding-right: 10px;
+  padding-left: 10px;
 }
+#hour{
+  padding-right: 26px;
+  padding-left: 26px;
 
-.send-button {
-    width: 60px;
-    padding: 10px;
-    background: rgb(238,174,202);
-    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    position: absolute;
-    bottom: 20px;
-    right : 30px;
 }
 
-.chat-container #title {
-    padding: 10px;
-    text-align: center;
-}
-
-
-        @font-face {
-            font-family: 'Cafe24Supermagic-Bold-v1.0';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/Cafe24Supermagic-Bold-v1.0.woff2') format('woff2');
-            font-weight: 700;
-            font-style: normal;
-        }
-
-        .intro-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        .intro-container h2{
-            font-family: 'Cafe24Supermagic-Bold-v1.0';
-        }
-        .intro-container img{
-            width: 50%;
-            min-width: 300px;
-        }
-
-       .intro-container button{
-         border-radius: 6px;
-         padding: 10px;
-         background-color: #fff;
-         border : 2px solid gray;
-       }
-
-
-       #loader {
-        text-align: center;
-       }
-       /* 로딩 스피너 추가 */
-       .load-wrapp {
-        float: left;
-        width: 100px;
-        height: 100px;
-        margin: 0 10px 10px 0;
-        padding: 20px 20px 20px;
-        border-radius: 5px;
-        text-align: center;
-      }
-      .load-wrapp:last-child {
-        margin-right: 0;
-      }
-      
-      .line {
-        display: inline-block;
-        width: 13px;
-        height: 13px;
-        border-radius: 13px;
-        background-color: #84bdf0;
-      }
-       .line:nth-last-child(1) {
-        animation: loadingC 0.8s 0.1s linear infinite;
-      }
-       .line:nth-last-child(2) {
-        animation: loadingC 0.8s 0.3s linear infinite;
-      }
-       .line:nth-last-child(3) {
-        animation: loadingC 0.8s 0.4s linear infinite;
-      }      
-
-      @keyframes loadingC {
-        0% {
-          transform: translate(0, 0);
-        }
-        50% {
-          transform: translate(0, 15px);
-        }
-        100% {
-          transform: translate(0, 0);
-        }
-      }
-
-      .kakao_ad {
-        display: flex;
-        justify-content: center;
-        align-items: center; /* 배너 가운데 정렬 */
-        left: 0;
-        right: 0;
-        margin-top: 30px;
-        min-width: 350px;
-        min-height: 200px;
-        z-index: 1; /* z-index를 추가하여 다른 요소보다 뒤로 보냄 */
-    }
-
-    /* 미디어 쿼리 */
-
-@media only screen and (min-width: 600px) and (min-height: 900px) {
-  #messageInput {
-    width: 70%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 10px;
-    position: absolute;
-    bottom: 20px;
-    left: 50px;
-}
-}
-
-@media only screen and (min-width: 1000px) {
-  #messageInput {
-    width: 80%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    margin-right: 10px;
-    position: absolute;
-    bottom: 20px;
-    left: 50px;
-}
-}

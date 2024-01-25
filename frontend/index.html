@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyFortune</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>MyFortune</title>
+    <script src="https://kit.fontawesome.com/de18e820f6.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="intro" class="intro-container">
-        <!--<h2>나의 운세를 알아보자</h2>-->
         <img src="MyFortune.png" alt="myfortune..">
-        <label for="date" style="margin-bottom: 10px;">생년월일</label>
-        <input id="date" type="date" style="margin-bottom: 30px; cursor: pointer;">
-        <label for="hour" style="margin-bottom: 10px;">태어난 시간</label>
+        <label for="date" style="margin-bottom: 10px; position: relative; bottom :20px;">생년월일</label>
+        <input id="date" type="date" style="margin-bottom: 30px; padding: 10px; cursor: pointer;">
+        <label for="hour" style="margin-bottom: 10px; position: relative; bottom :20px;">태어난 시간</label>
         <select id="hour" style="margin-bottom: 30px; cursor: pointer; text-align: left;">
             <option value="">모르겠어요</option>
             <option value="00">오전 12시</option>
@@ -41,31 +43,33 @@
             <option value="22">오후 10시</option>
             <option value="23">오후 11시</option>
         </select>
-        <button id="fortuneBtn" onclick="start()">오늘의 운세 보러 가기</button>
+        <button class="startBtn" id="fortuneBtn" onclick="start()">운세 보러 가기</button>
     </div>
 
-    
-
     <div id="chat" class="chat-container" style="display: none;">
-        <span id="title">안녕하세요 MyFortune 입니다 &#127911;</span><br>
-        <span style="padding: 10px 10px;">오늘의 운세를 물어보세요 !</span><br>
+        <div id="title">안녕하세요 MyFortune 입니다 &#127911;<br>
+        <span id="subtext1">저에게 운세에 대해 물어보세요 !</span><br>
+        <span id="subtext2">(ex. 오늘의 운세를 알려줘)</span>
+        </div>
 
         <div class="chat-bubble user-bubble">
-            <!-- Chat messages will be displayed here -->
+            <!-- 사용자 챗 부분 -->
             
         </div>
         <div class="chat-bubble bot-bubble" id="fortuneResponse">
-            <!-- 응답 부분-->
-        </div>
-        <div id="loader" class="load-wrapp" style="display:none;">
-                  <div class="line"></div>
-                  <div class="line"></div>
-                  <div class="line"></div>
+            <!-- gpt 답변 부분-->
         </div>
 
-            <input type="text" class="chat-input" id="messageInput" placeholder="메세지를 입력하세요...">
-            <button class="send-button" onclick="sendMessage()">send</button>
-    
+                  <!--로딩 스피너-->
+                <div id="loader" class="load-wrapp" style="display:none;">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+
+            <input type="text" class="chat-input" id="messageInput" placeholder="메세지를 입력하세요..."  onkeydown="handleKeyPress(event)">
+            <!--<button class="send-button" onclick="sendMessage()">send</button>-->
+            <i class="fa-solid fa-arrow-up" class="send-button" onclick="sendMessage()"></i>   
     
         </div>
         <div id="ad">

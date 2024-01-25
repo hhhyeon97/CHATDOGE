@@ -9,7 +9,7 @@ function start(){
     const date = document.getElementById('date').value;
     const hour = document.getElementById('hour').value;
     if(date === ''){
-        alert('생년월일을 입력해 주세요.');
+        alert('생년월일을 입력해 주세요 !');
         return;
     }
     myDateTime = date + hour;
@@ -21,8 +21,22 @@ function start(){
     //console.log(myDateTime);
 }
 
-async function sendMessage() {
 
+function handleKeyPress(event) {
+    // 엔터 키를 눌렀을 때
+    if (event.key === 'Enter') {
+      sendMessage();
+    }
+  }
+
+async function sendMessage() {
+    const m = document.getElementById('messageInput').value.trim();
+    if (m === '') {
+        alert('메세지를 입력해주세요!');
+        document.getElementById('messageInput').focus();
+        return;
+    }
+    
     // 로딩 스피너 보여주기
     document.getElementById('loader').style.display = "block";
 
