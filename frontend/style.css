@@ -15,12 +15,14 @@ body {
   font-family: 'NanumSquareNeo-Variable';
   background-color: #706c6c;
   margin: 0;
+  height: 100vh;
 }
 
  /*==========챗 ui 컨테이너=========*/
  .chat-container {
   width: 300px;
   height: 300px;
+  max-height: 500px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -29,6 +31,7 @@ body {
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   padding: 15px;
   border-radius: 10px;
+  overflow-y: auto;
 }
 /*상단 메세지*/
 #title {
@@ -44,52 +47,95 @@ body {
 
 /*채팅 메세지 출력 ui */
 .chat-bubble {
-  margin: 5px 0;
+  margin: 10px 0;
   padding: 10px;
   border-radius: 10px;
 }
 
 .user-bubble {
+  display: none;
   background-color: #f0f4f5;
   color: #000;
   align-self: flex-end;
 }
 
 .bot-bubble {
+  display: none;
   background-color: #f0f4f5;
   color: #000;
   align-self: flex-start;
 }
 
+
+.input-container {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+
 /*사용자 채팅 입력 프롬프트 */
 .chat-input {
-  width: 70%;
-  padding: 8px;
-  margin-right: 5px;
+  padding: 20px;
+  width: 220px;
   border: 1px solid #ccc;
+  background-color: #f0f4f5;
   border-radius: 5px;
   outline: none;
-}
-
-
-/*전송 버튼
-.send-button{
-  padding: 8px 12px;
-  background-color: #a9a7b8;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-*/
-/*전송 아이콘 */
-i {
-  color: white;
-  cursor: pointer;
-  font-size: 20px;
+  font-size: 16px;
   position:relative;
-  top: 2px;
+  right: 30px;
+  top: 20px;
+  margin-left: 10px;
 }
+
+/* 전송 아이콘 */
+i {
+  color: #f0f4f5;
+  cursor: pointer;
+  font-size: 25px;
+  transition:all 0.2s ease-out;
+  float:right;
+  position:relative;
+  left: 20px;
+  bottom: 20px;
+}
+i:hover{
+  color : #4d4c46;
+}
+
+@media screen and (min-width: 768px) and (min-height: 1024px) {
+
+  /* 아이콘 위치 조절*/
+  i {
+    position:relative;
+    left: 20px;
+    bottom: -33px;
+  }
+}
+
+
+/*로딩 메세지로 변경*/
+#loader-message{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0;
+  animation: blink 1s infinite alternate;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 
  /* 로딩 스피너 추가 */
  #loader {
@@ -100,17 +146,16 @@ i {
 }
 
 .load-wrapp {
-  width: 40px;
+  width: 30px;
   display: flex;
   justify-content: space-between;
 }
 
 .load-wrapp .line {
-  width: 13px;
-  height: 13px;
-  border-radius: 13px;
-  background: rgb(196, 174, 231);
-  background: radial-gradient(circle, rgb(196, 174, 231) 0%, rgb(235, 225, 185) 100%);
+  width: 11px;
+  height: 11px;
+  border-radius: 11px;
+  background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgb(206, 206, 206) 100%);
 }
 
 .load-wrapp .line:nth-last-child(1) {
@@ -163,7 +208,7 @@ border-radius: 6px;
 width : 200px;
 padding: 20px;
 border : 2px solid white;
-margin-bottom : -30px;
+margin-bottom : 10px;
 font-family: 'NanumSquareNeo-Variable';
 font-size: 20px;
 transition: 0.5s;
@@ -192,15 +237,15 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   border-radius: 6px;
   padding :5px;
   position: relative;
-  bottom : 20px;
+  bottom : 40px;
 }
 #date {
   padding-right: 10px;
   padding-left: 10px;
 }
 #hour{
-  padding-right: 26px;
-  padding-left: 26px;
+  padding-right: 30px;
+  padding-left: 30px;
 
 }
 
