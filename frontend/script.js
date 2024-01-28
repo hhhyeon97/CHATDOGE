@@ -4,6 +4,8 @@ let assistantMessages = [];
 
 let myDateTime = '';
 
+let isChatting = false;  // 초기에는 채팅 중이 아님
+
 function start() {
   const date = document.getElementById('date').value;
   const hour = document.getElementById('hour').value;
@@ -17,6 +19,10 @@ function start() {
   document.getElementById("chat").style.display = "block";
   document.getElementById("ad").style.display = "none";
   document.getElementById("in").style.display = "block";
+
+   // 챗 부분 처음에는 숨겨짐
+   document.querySelector('.user-bubble').style.display = 'none';
+   document.querySelector('.bot-bubble').style.display = 'none';
 }
 
 function handleKeyPress(event) {
@@ -35,20 +41,40 @@ async function sendMessage() {
     return;
   }
 
+
   // 로딩 스피너 보여주기 - > 로딩 메세지 보여주기 
   document.getElementById('loader-message').style.display = "block";
+  document.getElementById('noneani').style.display = "block";
+
 
   // 사용자 메세지 출력
   const userBubble = document.createElement('div');
   userBubble.className = 'chat-bubble user-bubble';
   userBubble.textContent = message;
-  document.getElementById('fortuneResponse').appendChild(userBubble);
+  document.getElementById('fortuneRequest').appendChild(userBubble);
+
+
+  //사용자 메시지를 보낼 때만 표시
+  document.querySelector('.user-bubble').style.display = 'block';
 
   // 사용자 메세지 저장
   userMessages.push(message);
 
   // 입력 필드 초기화
   messageInput.value = '';
+
+
+ // 채팅 중 상태 변경
+ isChatting = true;
+ console.log(isChatting);
+
+// 입력 폼 비활성화 및 placeholder 텍스트 변경
+messageInput.disabled = true;
+//messageInput.placeholder = '답변 중에는 메세지를 보낼 수 없습니다.';
+
+// 전송 버튼 비활성화
+document.getElementById('sendButton').disabled = true;
+
 
   // 백엔드 서버에 메세지를 보내고 응답 출력
   try {
@@ -73,12 +99,24 @@ async function sendMessage() {
 
     // 로딩 스피너 숨기기 - > 로딩 메세지 숨기기 
     document.getElementById('loader-message').style.display = "none";
+    document.getElementById('noneani').style.display = "none";
 
     // 채팅 말풍선에 챗gpt 응답 출력
     const botBubble = document.createElement('div');
     botBubble.className = 'chat-bubble bot-bubble';
     botBubble.textContent = data.assistant;
     document.getElementById('fortuneResponse').appendChild(botBubble);
+
+   // 챗gpt 응답이 있을 때만 표시
+  document.querySelector('.bot-bubble').style.display = 'block';
+
+
+// 채팅 중 상태 변경
+isChatting = false;
+// 입력 폼 활성화 및 placeholder 텍스트 복원
+messageInput.disabled = false;
+messageInput.placeholder = '메세지를 입력하세요...';
+
 
     // assistantMessages에 챗gpt 메세지 저장
     assistantMessages.push(data.assistant);
