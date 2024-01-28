@@ -51,8 +51,20 @@ async function sendMessage() {
   // 사용자 메세지 출력
     const userBubble = document.createElement('div');
     userBubble.className = 'chat-bubble user-bubble';
-    userBubble.textContent = message;
-    document.getElementById('chat').appendChild(userBubble);
+
+ // 유저 아이콘 추가
+const userIcon = document.createElement('i');
+userIcon.className = 'bx bxs-user';
+userIcon.style.marginRight = '5px'; // 아이콘과 메시지 사이의 간격 조절
+userIcon.style.color = '#a1a09a'; // 아이콘 색상 변경
+userIcon.style.fontWeight ='bold';
+userBubble.appendChild(userIcon);
+
+// 메세지 추가
+const messageNode = document.createTextNode(message);
+userBubble.appendChild(messageNode);
+//userBubble.textContent = message;
+document.getElementById('chat').appendChild(userBubble);
 
 
   //사용자 메시지를 보낼 때만 표시
@@ -102,15 +114,28 @@ document.getElementById('sendButton').disabled = true;
     document.getElementById('loader-message').style.display = "none";
     document.getElementById('noneani').style.display = "none";
 
-    // 채팅 말풍선에 챗gpt 응답 출력
-    const botBubble = document.createElement('div');
-    botBubble.className = 'chat-bubble bot-bubble';
-    botBubble.textContent = data.assistant;
-    document.getElementById('chat').appendChild(botBubble);
 
 
-   // 챗gpt 응답이 있을 때만 표시
-  document.querySelector('.bot-bubble').style.display = 'block';
+   // 채팅 말풍선에 챗GPT 응답 출력
+const botBubble = document.createElement('div');
+botBubble.className = 'chat-bubble bot-bubble';
+
+// 챗GPT 아이콘 추가
+const botIcon = document.createElement('i');
+botIcon.className = 'bx bxs-star';
+botIcon.style.marginRight = '5px'; // 아이콘과 메시지 사이의 간격 조절
+botIcon.style.color = '#ebe9c3'; // 아이콘 색상 변경
+botIcon.style.fontWeight ='bold';
+botBubble.appendChild(botIcon);
+
+// 챗GPT 응답 메시지 추가
+const botMessageNode = document.createTextNode(data.assistant);
+botBubble.appendChild(botMessageNode);
+
+document.getElementById('chat').appendChild(botBubble);
+
+// 챗GPT 응답이 있을 때만 표시
+document.querySelector('.bot-bubble').style.display = 'block';
 
 
 // 채팅 중 상태 변경
