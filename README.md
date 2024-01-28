@@ -1,5 +1,8 @@
 # <p align="center">🌞 MyFortune</p>
 
+### 0. 시연 gif
+![포츈05](https://github.com/hhhyeon97/MyFortune/assets/148893126/05f30ca9-d8d5-4ec4-a664-1af12fa7a49c)
+
 ### 1. 프로젝트 소개
 CHATDOGE를 레퍼런스 삼아 운세 서비스를 제작하였습니다.<BR>
 사용자는 생년월일과 태어난 시간을 입력한 후 질문을 할 수 있으며 <BR>
@@ -23,7 +26,6 @@ CHATDOGE를 레퍼런스 삼아 운세 서비스를 제작하였습니다.<BR>
 - FRONTEND 배포 : CloudFlare<BR>
 - BACKEND 배포 : AWS Lambda<BR>
 
-### 5. 시연 영상
 
 
 
