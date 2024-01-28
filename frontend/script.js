@@ -37,6 +37,7 @@ async function sendMessage() {
   const message = messageInput.value.trim();
   if (message === '') {
     alert('메세지를 입력해주세요!');
+    messageInput.value = ''; // 입력창의 내용 초기화
     messageInput.focus();
     return;
   }
@@ -48,14 +49,14 @@ async function sendMessage() {
 
 
   // 사용자 메세지 출력
-  const userBubble = document.createElement('div');
-  userBubble.className = 'chat-bubble user-bubble';
-  userBubble.textContent = message;
-  document.getElementById('fortuneRequest').appendChild(userBubble);
+    const userBubble = document.createElement('div');
+    userBubble.className = 'chat-bubble user-bubble';
+    userBubble.textContent = message;
+    document.getElementById('chat').appendChild(userBubble);
 
 
   //사용자 메시지를 보낼 때만 표시
-  document.querySelector('.user-bubble').style.display = 'block';
+  //document.querySelector('.user-bubble').style.display = 'block';
 
   // 사용자 메세지 저장
   userMessages.push(message);
@@ -105,7 +106,8 @@ document.getElementById('sendButton').disabled = true;
     const botBubble = document.createElement('div');
     botBubble.className = 'chat-bubble bot-bubble';
     botBubble.textContent = data.assistant;
-    document.getElementById('fortuneResponse').appendChild(botBubble);
+    document.getElementById('chat').appendChild(botBubble);
+
 
    // 챗gpt 응답이 있을 때만 표시
   document.querySelector('.bot-bubble').style.display = 'block';
@@ -116,6 +118,8 @@ isChatting = false;
 // 입력 폼 활성화 및 placeholder 텍스트 복원
 messageInput.disabled = false;
 messageInput.placeholder = '메세지를 입력하세요...';
+// 전송 아이콘 비활성화
+document.getElementById('sendButton').disabled = false;
 
 
     // assistantMessages에 챗gpt 메세지 저장

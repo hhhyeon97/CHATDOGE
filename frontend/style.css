@@ -20,18 +20,37 @@ body {
 /*==========챗 ui 컨테이너=========*/
 .chat-container {
   min-width: 300px;
-  max-height: 500px;
+  max-height: 400px;
   background-color: #928a8a;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   padding: 15px;
   border-radius: 10px;
-  overflow-y: auto;
+  /*overflow-y: auto;*/
+  /*overflow-y: scroll; /* 스크롤이 항상 표시되도록 설정 */
+  overflow-y: auto; /* 스크롤이 필요한 경우만 표시 */
+  scrollbar-width: thin; /* 스크롤바 두께 설정 */
+  scrollbar-color: #ececec transparent; /* 스크롤바 색상 설정 */
   margin: auto; /* 가운데 정렬을 위한 수정 */
   position: absolute;
-  top: 50%;
+  top: calc(50% - 60px); /* 컨테이너를 화면 중앙에서 위로 50px 이동 */
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+/* Webkit 기반 브라우저용 스크롤바 스타일 */
+/* 현재는 Webkit 기반 브라우저에서만 동작합니다. */
+/* 다른 브라우저에서는 적용되지 않을 수 있습니다. */
+/* 또한, 모바일 환경에서도 동작할 수 있으나 일부 브라우저에서는 지원되지 않을 수 있습니다. */
+/* 혹은 각 브라우저의 특정 스크롤바 스타일링 기능을 사용할 수 있습니다. */
+.chat-container::-webkit-scrollbar {
+  width: 6px; /* 스크롤바의 너비 */
+}
+
+.chat-container::-webkit-scrollbar-thumb {
+  background: #ececec; /* 스크롤바 색상 */
+  border-radius: 3px; /* 스크롤바 모서리 반경 */
+}
+
 
 /*상단 메세지*/
 #title {
@@ -65,14 +84,12 @@ body {
   color: #000;
   align-self: flex-start;
 }
-
-
 /* input + 전송아이콘 영역 */
 .input-container {
   display: flex;
   align-items: center; /* 요소를 수직으로 가운데 정렬 */
   position: absolute;
-  bottom: 20px; /* 원하는 간격에 맞게 조정 */
+  bottom: 70px; /* 원하는 간격에 맞게 조정 */
   left: 50%;
   transform: translateX(-50%);
 }
@@ -80,24 +97,39 @@ body {
 /*사용자 채팅 입력 프롬프트 */
 .chat-input {
   padding: 18px;
-  width: calc(100% - 40px); /* 아이콘과 여백을 고려한 너비 계산 */
+  /*width: calc(100% - 10px);*/ /* 아이콘과 여백을 고려한 너비 계산 */
+  width : 220px;
   border: 1px solid #ccc;
   background-color: #f0f4f5;
   border-radius: 5px;
   outline: none;
   font-size: 16px;
-  margin-right: 10px; /* 아이콘과의 간격을 조정 */
+  position: relative; /* 부모 요소에 대한 상대적 위치 설정을 위해 추가 */
+  right : 24px;
 }
 
-/* 전송 아이콘 */
+/* 전송 아이콘 버튼모양 없애기 */
 #sendButton {
-  color: #f0f4f5;
+  background: none;
+  border: none;
+  padding: 0;
   cursor: pointer;
-  font-size: 25px;
+  font-size: 28px;
+  color: #f0f4f5;
   transition: all 0.2s ease-out;
+  position: absolute; /* 입력 상자 내에서의 상대적 위치 설정 */
+  right: -25px; /* 원하는 위치에 맞게 조정 */
+  bottom: 13px;
 }
+
 #sendButton:hover {
   color: #424242;
+}
+
+@media screen and (max-width: 767px) {
+  .chat-container {
+    max-height: 70vh; /* 모바일 기기에서는 뷰포트 높이의 70%로 제한 */
+  }
 }
 
 

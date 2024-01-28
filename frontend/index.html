@@ -50,29 +50,14 @@
         <div id="title">안녕하세요 MyFortune 입니다 &#127911;<br>
         <span id="subtext1">저에게 운세에 대해 물어보세요 !</span><br>
         <span id="subtext2">(ex. 오늘의 운세를 알려줘)</span>
-                
-                <span id="noneani" style="color:#f0f4f5; display: none;">(답변 중일 때는 메세지를 보내실 수 없어요)</span> 
-                <div id="loader-message" style="color:#f0f4f5; display: none;">당신의 행운을 들고 오는 중입니다 !<br>잠시만 기다려주세요...
-                
-                </div>
-        </div>
-
-        <div class="chat-bubble user-bubble" id="fortuneRequest">
-            <!-- 사용자 챗 부분 -->
-        </div>
-        <div class="chat-bubble bot-bubble" id="fortuneResponse">
-            <!-- gpt 답변 부분-->
-        </div>
-
-
+        <span id="noneani" style="color:#f0f4f5; display: none;">(답변 중일 때는 메세지를 보내실 수 없어요)</span> 
+        <div id="loader-message" style="color:#f0f4f5; display: none;">당신의 행운을 들고 오는 중입니다 !<br>잠시만 기다려주세요...</div>
+        </div> <!-- title 끝-->
         </div> <!--채팅 컨테이너 끝-->
-
         <div id="in" class="input-container" style="display: none;">
             <input type="text" class="chat-input" id="messageInput" placeholder="메세지를 입력하세요..."  onkeydown="handleKeyPress(event)">
-            <!--<button class="send-button" onclick="sendMessage()">send</button>-->
-            <i class="fa-regular fa-paper-plane" id="sendButton" onclick="sendMessage()"></i>   
+            <button id="sendButton" class="fa-regular fa-paper-plane" onclick="sendMessage()"></button> 
         </div>
-
 
         <div id="ad">
         <!-- 광고 배너 -->
