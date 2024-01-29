@@ -215,37 +215,28 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 */
 
 #datepicker {
-  width: 120px; /* 너비 조정 */
-  border :2px solid #f0f4f5;
-  border-radius: 6px;
-  padding :10px;
-  color : black;
-  outline: none;
-  cursor: pointer;
-  font-size: 15px;
-  margin-top : 5px;
-  margin-bottom: 5px;
-  text-align: center;
+    width: 106px; /* 너비 조정 */
+    border: 2px solid gray;
+    border-radius: 6px;
+    padding: 10px 30px 10px 10px; /* 오른쪽 패딩을 아이콘 너비만큼 늘리기*/
+    color: black;
+    outline: none;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    position: relative; /* 아이콘과 겹치지 않도록 상대 위치 지정 */
+    -webkit-appearance: none; /* iOS와 Safari에서 기본 스타일링 제거 */
+    -moz-appearance: none; /* Firefox에서 기본 스타일링 제거 */
+    appearance: none; /* 다른 브라우저에서 기본 스타일링 제거 */
+    background-color: white;
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAANtJREFUSEvFld0NwjAMhK+TAJvAJjAJbAKbwChlEshJTWSZWAl2f/zShyb+cmfHGbBwDAvnRwvwmQ5grWv9Xx9wBHAHsHdaNwK4AHjl/Vr6M/0kJBKEHCxA9jQC4N5ycK1gNUCruyyFP11lKdgMcAbAIpYuUVLCCthljJPhkQvAO8HW3aWktykxv++KGheAtvDy1YJKpF0uABPXIDo517kBcrN1SUMAKrimGfUQNZhVAYssvc7DkC0rI2RRz3zaHjDHuKaV5SLqmUOvWUzvm9B8cHp8/muNd2p2Q760AzkZpIfB7AAAAABJRU5ErkJggg==");
+    background-repeat: no-repeat;
+    background-position: right 10px center; /* 화살표 아이콘 위치 조정 */
+    text-align: center;
 }
 
 
-#date{
-  border :2px solid #f0f4f5;
-  border-radius: 6px;
-  padding :10px;
-  color : black;
-  outline: none;
-  cursor: pointer;
-  font-size: 15px;
-  margin-top : 5px;
-  margin-bottom: 5px;
-}
-/*
-#hour{
-  padding-right: 20px;
-  padding-left: 20px;
-}
-*/
 .input-group {
   display: flex;
   flex-direction: column;
@@ -260,11 +251,26 @@ input[type="date"]::-webkit-calendar-picker-indicator{
   width: 100%; /* 라벨 너비를 100%로 설정하여 가운데 정렬 적용 */
 }
 
+
+/*
+#date{
+  border :2px solid #f0f4f5;
+  border-radius: 6px;
+  padding :10px;
+  color : black;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top : 5px;
+  margin-bottom: 5px;
+}
+*/
+
 /* select 스타일 */
 #hour {
   border: 2px solid gray;
   border-radius: 6px;
-  padding: 10px 30px 10px 10px; /* 오른쪽 패딩을 아이콘 너비만큼 늘립니다. */
+  padding: 10px 30px 10px 10px; /* 오른쪽 패딩을 아이콘 너비만큼 늘리기*/
   color: black;
   outline: none;
   cursor: pointer;
@@ -279,8 +285,41 @@ input[type="date"]::-webkit-calendar-picker-indicator{
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJ5JREFUSEvtk9sNgCAMRS+b6CY6ipPoJuokruIoehNICKFQTEj8qD++6Dn0Njh0vlxnPkxQTdgi+n9EK4ATwC1sdQAwATikVkpDJnzz8DkjIXz3gkWSlAQEXG8h7+wglsRw/hu/dMCanITfw86LcC7UnINUQihzr8K1grQTvqvgLYJYwmcx83QWmojimjDw6gELC1oFarAJ1FHZDKpRPbjcGRnmtrrsAAAAAElFTkSuQmCC"); /* 화살표 아이콘 추가 */
   background-repeat: no-repeat;
   background-position: right 10px center; /* 화살표 아이콘 위치 조정 */
+  background-color: white;
 }
 
-#hour option {
+#hour option{
   text-align: center;
 }
+
+/* select 박스 다른 방법 시도
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJ5JREFUSEvtk9sNgCAMRS+b6CY6ipPoJuokruIoehNICKFQTEj8qD++6Dn0Njh0vlxnPkxQTdgi+n9EK4ATwC1sdQAwATikVkpDJnzz8DkjIXz3gkWSlAQEXG8h7+wglsRw/hu/dMCanITfw86LcC7UnINUQihzr8K1grQTvqvgLYJYwmcx83QWmojimjDw6gELC1oFarAJ1FHZDKpRPbjcGRnmtrrsAAAAAElFTkSuQmCC");
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer; 
+}
+
+#hour {
+  border: 2px solid gray;
+  border-radius: 6px;
+  padding: 10px;
+  color: black;
+  outline: none;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 150px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: white;
+}
+*/

@@ -14,7 +14,7 @@ function start() {
     alert('생년월일을 입력해 주세요 !');
     return;
   }
-  myDateTime = date + hour;
+  myDateTime = date + ' ' + hour; // 시간과 날짜를 합침
 
 
   /*
@@ -68,9 +68,9 @@ async function sendMessage() {
 
  // 유저 아이콘 추가
 const userIcon = document.createElement('i');
-userIcon.className = 'bx bxs-user';
+userIcon.className = 'bx bxs-star';
 userIcon.style.marginRight = '5px'; // 아이콘과 메시지 사이의 간격 조절
-userIcon.style.color = '#97919e'; // 아이콘 색상 변경
+userIcon.style.color = '#a8bfe3'; // 아이콘 색상 변경
 userIcon.style.fontSize = '15px';
 userIcon.style.fontWeight ='bold';
 userBubble.appendChild(userIcon);
@@ -80,7 +80,6 @@ const messageNode = document.createTextNode(message);
 userBubble.appendChild(messageNode);
 //userBubble.textContent = message;
 document.getElementById('chat').appendChild(userBubble);
-
 
   //사용자 메시지를 보낼 때만 표시
   //document.querySelector('.user-bubble').style.display = 'block';

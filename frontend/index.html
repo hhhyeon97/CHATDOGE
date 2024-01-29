@@ -17,6 +17,15 @@
 </head>
 <body>
     <script>
+
+    $(function() {
+        $('#datepicker').on('keydown', function(event) {
+        // 키보드 입력을 감지하여 이벤트를 취소합니다.
+        event.preventDefault();
+        });
+    });
+
+
     $(function() {
     //input을 datepicker로 선언
     $("#datepicker").datepicker({
@@ -30,7 +39,12 @@
         monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], //달력의 월 부분 Tooltip
         dayNamesMin: ['일','월','화','수','목','금','토'], //달력의 요일 텍스트
         dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'], //달력의 요일 Tooltip
-        yearRange: '-30:+0' // 30년 전부터 현재 연도까지의 범위
+        yearRange: '-30:+0', // 30년 전부터 현재 연도까지의 범위
+        
+        onSelect: function(selectedDate) {
+            // 선택된 날짜를 변수에 저장
+            date = selectedDate;
+        }
     });                    
 
     //초기값을 오늘 날짜로 설정해줘야 합니다.
@@ -40,11 +54,11 @@
     <div id="intro" class="intro-container">
         <img src="MyFortune.png" alt="myfortune..">
         <div class="input-group">
+            <label for="datepicker">생년월일</label>
+            <input type="text" id="datepicker" placeholder="" readonly>
            <!--<input type="date" placeholder="YYYY-MM-DD">-->
         <!--<label for="date">생년월일</label>
         <input id="date" type="date" >-->
-        <label for="datepicker">생년월일</label>
-        <input type="text" id="datepicker" placeholder="">
         </div>
         <div class="input-group">
         <label for="hour" style="font-size: 15px;">태어난 시간</label>
@@ -80,7 +94,7 @@
     </div>
 
     <div id="chat" class="chat-container" style="display: none;">
-        <div id="title">안녕하세요 MyFortune 입니다 &#127911;<br>
+        <div id="title">안녕하세요 MyFortune 입니다 <span style="font-size:20px;">🗯️</span><br>
         <span id="subtext1">저에게 운세에 대해 물어보세요 !</span><br>
         <span id="subtext2">(ex. 내 오늘의 운세를 알려줘)</span>
         <span id="noneani" style="color:#f0f4f5; display: none;">( 답변 중일 때는 메세지를 보내실 수 없어요 )</span> 
