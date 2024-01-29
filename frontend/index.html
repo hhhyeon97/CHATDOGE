@@ -8,16 +8,47 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+     <link rel="icon" type="image/png" href="icon.png">
     <title>MyFortune</title>
     <script src="https://kit.fontawesome.com/de18e820f6.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <script>
+    $(function() {
+    //input을 datepicker로 선언
+    $("#datepicker").datepicker({
+        dateFormat: 'yy-mm-dd', //달력 날짜 형태
+        showOtherMonths: true, //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+        showMonthAfterYear: true, // 월- 년 순서가아닌 년도 - 월 순서
+        changeYear: true, //option값 년 선택 가능
+        changeMonth: true, //option값  월 선택 가능
+        yearSuffix: "년", //달력의 년도 부분 뒤 텍스트
+        monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], //달력의 월 부분 텍스트
+        monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'], //달력의 월 부분 Tooltip
+        dayNamesMin: ['일','월','화','수','목','금','토'], //달력의 요일 텍스트
+        dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'], //달력의 요일 Tooltip
+        yearRange: '-30:+0' // 30년 전부터 현재 연도까지의 범위
+    });                    
+
+    //초기값을 오늘 날짜로 설정해줘야 합니다.
+    $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
+});
+        </script>
     <div id="intro" class="intro-container">
         <img src="MyFortune.png" alt="myfortune..">
-        <label for="date" style="margin-bottom: 10px; position: relative; bottom :40px;">생년월일</label>
-        <input id="date" type="date" style="margin-bottom: 10px; padding: 10px; cursor: pointer;">
-        <label for="hour" style="margin-bottom: 10px; position: relative; bottom :40px;">태어난 시간</label>
-        <select id="hour" style="margin-bottom: 10px; cursor: pointer; text-align: left;">
+        <div class="input-group">
+           <!--<input type="date" placeholder="YYYY-MM-DD">-->
+        <!--<label for="date">생년월일</label>
+        <input id="date" type="date" >-->
+        <label for="datepicker">생년월일</label>
+        <input type="text" id="datepicker" placeholder="">
+        </div>
+        <div class="input-group">
+        <label for="hour" style="font-size: 15px;">태어난 시간</label>
+        <select id="hour">
             <option value="">모르겠어요</option>
             <option value="00">오전 12시</option>
             <option value="01">오전 1시</option>
@@ -44,14 +75,15 @@
             <option value="22">오후 10시</option>
             <option value="23">오후 11시</option>
         </select>
+        </div>
         <button class="startBtn" id="fortuneBtn" onclick="start()">운세 보러 가기</button>
     </div>
 
     <div id="chat" class="chat-container" style="display: none;">
         <div id="title">안녕하세요 MyFortune 입니다 &#127911;<br>
         <span id="subtext1">저에게 운세에 대해 물어보세요 !</span><br>
-        <span id="subtext2">(ex. 오늘의 운세를 알려줘)</span>
-        <span id="noneani" style="color:#f0f4f5; display: none;">(답변 중일 때는 메세지를 보내실 수 없어요)</span> 
+        <span id="subtext2">(ex. 내 오늘의 운세를 알려줘)</span>
+        <span id="noneani" style="color:#f0f4f5; display: none;">( 답변 중일 때는 메세지를 보내실 수 없어요 )</span> 
         <div id="loader-message" style="color:#f0f4f5; display: none;">당신의 행운을 들고 오는 중입니다 !<br>잠시만 기다려주세요...</div>
         </div> <!-- title 끝-->
 

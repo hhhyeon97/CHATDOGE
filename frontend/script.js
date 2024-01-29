@@ -6,14 +6,28 @@ let myDateTime = '';
 
 let isChatting = false;  // 초기에는 채팅 중이 아님
 
+
 function start() {
-  const date = document.getElementById('date').value;
+  const date = document.getElementById('datepicker').value;
   const hour = document.getElementById('hour').value;
   if (date === '') {
     alert('생년월일을 입력해 주세요 !');
     return;
   }
   myDateTime = date + hour;
+
+
+  /*
+  // Flatpickr 초기화
+  flatpickr('#date', {
+    dateFormat: 'Y-m-d', // 선택한 날짜의 형식을 지정할 수 있습니다.
+    defaultDate: myDateTime, // 초기 날짜 설정
+    onChange: function(selectedDates, dateStr, instance) {
+      myDateTime = dateStr; // 사용자가 선택한 날짜 및 시간을 업데이트
+    }
+  });
+  */
+
 
   document.getElementById("intro").style.display = "none";
   document.getElementById("chat").style.display = "block";
@@ -56,7 +70,8 @@ async function sendMessage() {
 const userIcon = document.createElement('i');
 userIcon.className = 'bx bxs-user';
 userIcon.style.marginRight = '5px'; // 아이콘과 메시지 사이의 간격 조절
-userIcon.style.color = '#a1a09a'; // 아이콘 색상 변경
+userIcon.style.color = '#97919e'; // 아이콘 색상 변경
+userIcon.style.fontSize = '15px';
 userIcon.style.fontWeight ='bold';
 userBubble.appendChild(userIcon);
 
