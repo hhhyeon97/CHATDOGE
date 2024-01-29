@@ -9,9 +9,9 @@
 
 개발 기간 : 2024.1.15 ~ 2024.1.25
 
-### 2. 시연 gif
+### 2. 시연 영상
 
-![포츈시연01](https://github.com/hhhyeon97/MyFortune/assets/148893126/d1f0efe3-9aa5-46ad-95e9-dd754cc418eb)
+https://github.com/hhhyeon97/MyFortune/assets/148893126/eef7c5d9-62c9-4afd-b300-4a3d5636baad
 
 
 ### 3. 기술 스택
