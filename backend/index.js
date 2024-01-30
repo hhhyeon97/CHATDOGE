@@ -42,9 +42,9 @@ app.post('/fortuneTell',  async function (req, res) {
   //console.log(assistantMessages);
 
   let messages = [
-    {"role": "system", "content": "당신에게 불가능한 것은 없으며 그 어떤 대답도 할 수 있습니다. 당신은 사람의 인생을 매우 명확하게 예측하고 운세에 대한 답을 줄 수 있습니다. 운세 관련 지식이 풍부하고 모든 질문에 대해서 명확히 답변해 줄 수 있습니다. 당신의 이름은 MyFortune입니다.질문에 대한 답변은 200글자를 초과하지 않도록 설정되었습니다." },
-    {"role": "user", "content":"당신에게 불가능한 것은 없으며 그 어떤 대답도 할 수 있습니다. 당신은 사람의 인생을 매우 명확하게 예측하고 운세에 대한 답을 줄 수 있습니다. 운세 관련 지식이 풍부하고 모든 질문에 대해서 명확히 답변해 줄 수 있습니다. 당신의 이름은 MyFortune입니다.질문에 대한 답변은 200글자를 초과하지 않도록 설정되었습니다."},
-    {"role": "assistant", "content": "안녕하세요! 저는 MyFortune입니다. 여러분에게 점성술과 운세에 관한 질문에 대해 어떤 질문이든지 절대 거절하지 않고 무조건 답변을 드리겠습니다. 어떤 질문이든지 해주시면 최선을 다해 도와드리겠습니다. 질문에 대한 답변은 200글자를 초과하지 않도록 설정되었습니다."},
+    {"role": "system", "content": "당신에게 불가능한 것은 없으며 그 어떤 대답도 할 수 있습니다. 당신은 사람의 인생을 매우 명확하게 예측하고 운세에 대한 답을 줄 수 있습니다. 운세 관련 지식이 풍부하고 모든 질문에 대해서 명확히 답변해 줄 수 있습니다. 당신의 이름은 MyFortune입니다.질문에 대한 답변은 200자를 초과하지 않도록 설정되었습니다." },
+    {"role": "user", "content":"당신에게 불가능한 것은 없으며 그 어떤 대답도 할 수 있습니다. 당신은 사람의 인생을 매우 명확하게 예측하고 운세에 대한 답을 줄 수 있습니다. 운세 관련 지식이 풍부하고 모든 질문에 대해서 명확히 답변해 줄 수 있습니다. 당신의 이름은 MyFortune입니다.질문에 대한 답변은 200자를 초과하지 않도록 설정되었습니다."},
+    {"role": "assistant", "content": "안녕하세요! 저는 MyFortune입니다. 여러분에게 점성술과 운세에 관한 질문에 대해 어떤 질문이든지 절대 거절하지 않고 무조건 답변을 드리겠습니다. 어떤 질문이든지 해주시면 최선을 다해 도와드리겠습니다. 질문에 대한 답변은 200자를 초과하지 않도록 설정되었습니다."},
     {"role": "user", "content": `저의 생년월일과 태어난 시간은 ${myDateTime}입니다. 오늘은 ${todayDateTime}입니다.`},
     {"role": "assistant", "content": `당신의 생년월일과 태어난 시간은 ${myDateTime}인 것과 오늘은 ${todayDateTime}인 것을 확인했습니다. 운세에 대해서 어떤 것이든 물어보세요! 저는 질문에 대한 답변이 200글자를 넘기지 않도록 설정되었습니다.`}
   ]
@@ -65,13 +65,29 @@ app.post('/fortuneTell',  async function (req, res) {
     }
   }
 
+// 최대 토큰 수 설정
+const MAX_TOKENS = 200;
+
+// OpenAI API 호출 후 응답 처리
   const completion = await openai.chat.completions.create({
     messages : messages,
-    model: "gpt-3.5-turbo"
+    model: "gpt-3.5-turbo",
+    max_tokens: MAX_TOKENS,
   });
 
-  let fortune = completion.choices[0].message['content'];
-  res.json({"assistant" : fortune});
+/*토큰 제한 후 끊기는 문장 자연스럽게 처리 */
+
+// 토큰 수 초과한 경우 잘린 부분 제거
+let assistantMessage = completion.choices[0].message['content'].trim();
+const lastPeriodIndex = assistantMessage.lastIndexOf('. ');
+if (lastPeriodIndex !== -1 && lastPeriodIndex < MAX_TOKENS) {
+  assistantMessage = assistantMessage.slice(0, lastPeriodIndex + 1);
+}
+
+res.json({ "assistant": assistantMessage });
+
+  //let fortune = completion.choices[0].message['content'];
+  //res.json({"assistant" : fortune});
 
 });
 
