@@ -11,8 +11,7 @@
 
 ### 2. 시연 영상
 
-https://github.com/hhhyeon97/MyFortune/assets/148893126/eef7c5d9-62c9-4afd-b300-4a3d5636baad
-
+![포츈시연02](https://github.com/hhhyeon97/MyFortune/assets/148893126/02c91315-c8b3-48a7-9086-91d1dbee5c14)
 
 ### 3. 기술 스택
 - Node.js
