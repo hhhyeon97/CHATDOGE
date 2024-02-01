@@ -17,18 +17,6 @@ function start() {
   myDateTime = date + ' ' + hour; // 시간과 날짜를 합침
 
 
-  /*
-  // Flatpickr 초기화
-  flatpickr('#date', {
-    dateFormat: 'Y-m-d', // 선택한 날짜의 형식을 지정할 수 있습니다.
-    defaultDate: myDateTime, // 초기 날짜 설정
-    onChange: function(selectedDates, dateStr, instance) {
-      myDateTime = dateStr; // 사용자가 선택한 날짜 및 시간을 업데이트
-    }
-  });
-  */
-
-
   document.getElementById("intro").style.display = "none";
   document.getElementById("chat").style.display = "block";
   document.getElementById("ad").style.display = "none";
@@ -56,11 +44,9 @@ async function sendMessage() {
     return;
   }
 
-
   // 로딩 스피너 보여주기 - > 로딩 메세지 보여주기 
   document.getElementById('loader-message').style.display = "block";
   document.getElementById('noneani').style.display = "block";
-
 
   // 사용자 메세지 출력
     const userBubble = document.createElement('div');
@@ -90,7 +76,6 @@ document.getElementById('chat').appendChild(userBubble);
   // 입력 필드 초기화
   messageInput.value = '';
 
-
  // 채팅 중 상태 변경
  isChatting = true;
  console.log(isChatting);
@@ -101,7 +86,6 @@ messageInput.disabled = true;
 
 // 전송 버튼 비활성화
 document.getElementById('sendButton').disabled = true;
-
 
   // 백엔드 서버에 메세지를 보내고 응답 출력
   try {
@@ -129,7 +113,6 @@ document.getElementById('sendButton').disabled = true;
     document.getElementById('noneani').style.display = "none";
 
 
-
    // 채팅 말풍선에 챗GPT 응답 출력
 const botBubble = document.createElement('div');
 botBubble.className = 'chat-bubble bot-bubble';
@@ -151,7 +134,6 @@ document.getElementById('chat').appendChild(botBubble);
 // 챗GPT 응답이 있을 때만 표시
 document.querySelector('.bot-bubble').style.display = 'block';
 
-
 // 채팅 중 상태 변경
 isChatting = false;
 // 입력 폼 활성화 및 placeholder 텍스트 복원
@@ -159,7 +141,6 @@ messageInput.disabled = false;
 messageInput.placeholder = '메세지를 입력하세요...';
 // 전송 아이콘 비활성화
 document.getElementById('sendButton').disabled = false;
-
 
     // assistantMessages에 챗gpt 메세지 저장
     assistantMessages.push(data.assistant);

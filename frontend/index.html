@@ -20,7 +20,7 @@
 
     $(function() {
         $('#datepicker').on('keydown', function(event) {
-        // 키보드 입력을 감지하여 이벤트를 취소합니다.
+        // 키보드 입력을 감지하여 이벤트를 취소
         event.preventDefault();
         });
     });
@@ -47,7 +47,7 @@
         }
     });                    
 
-    //초기값을 오늘 날짜로 설정해줘야 합니다.
+    //초기값을 오늘 날짜로 설정
     $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
 });
         </script>
@@ -56,7 +56,6 @@
         <div class="input-group">
             <label for="datepicker">생년월일</label>
             <input type="text" id="datepicker" placeholder="" readonly>
-           <!--<input type="date" placeholder="YYYY-MM-DD">-->
         <!--<label for="date">생년월일</label>
         <input id="date" type="date" >-->
         </div>
