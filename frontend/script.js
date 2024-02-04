@@ -149,3 +149,20 @@ document.getElementById('sendButton').disabled = false;
     console.error('Error : ', error);
   }
 }
+
+
+// audio 재생
+var audio = document.getElementById("myAudio");
+var playPauseButton = document.getElementById("playPauseButton");
+var isPlaying = false;
+
+playPauseButton.addEventListener("click", function() {
+    if (isPlaying) {
+        audio.pause();
+        playPauseButton.innerHTML = "<i style='font-size: 35px;' class='bx bx-music'></i>"; // 기본 아이콘
+    } else {
+        audio.play();
+        playPauseButton.innerHTML = "<i style='font-size: 35px;' class='bx bxs-music'></i>"; // 바꿀 아이콘
+    }
+    isPlaying = !isPlaying;
+});
