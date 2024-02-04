@@ -44,8 +44,26 @@
         onSelect: function(selectedDate) {
             // 선택된 날짜를 변수에 저장
             date = selectedDate;
+        },           
+    // 캘린더 위치 고정 추가 -> 적용 안 됨
+    beforeShow: function(input, inst) {
+            var dpWidth = $(inst.dpDiv).outerWidth();
+            var dpHeight = $(inst.dpDiv).outerHeight();
+            var inputWidth = $(input).outerWidth();
+            var inputHeight = $(input).outerHeight();
+            var inputOffset = $(input).offset();
+            var scrollTop = $(window).scrollTop();
+
+            var top = inputOffset.top + inputHeight - scrollTop;
+            var left = inputOffset.left + (inputWidth - dpWidth) / 2;
+
+            inst.dpDiv.css({
+                top: top,
+                left: left,
+                right: 'auto'
+            });
         }
-    });                    
+    });
 
     //초기값을 오늘 날짜로 설정
     $('#datepicker').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)            
@@ -102,20 +120,23 @@
         <button class="startBtn" id="fortuneBtn" onclick="start()">운세 보러 가기</button>
     </div>
 
+    <img id="bot-icon" src="chat-bot_7568485.png">
+
     <div id="chat" class="chat-container" style="display: none;">
         <div id="title">안녕하세요 MyFortune 입니다 <span style="font-size:20px;">🗯️</span><br>
-        <span id="subtext1">저에게 운세에 대해 물어보세요 !</span><br>
-        <span id="subtext2">(ex. 내 오늘의 운세를 알려줘)</span>
-        <span id="noneani" style="color:#f0f4f5; display: none;">( 답변 중일 때는 메세지를 보내실 수 없어요 )</span> 
-        <div id="loader-message" style="color:#f0f4f5; display: none;">당신의 행운을 들고 오는 중입니다 !<br>잠시만 기다려주세요...</div>
+            <span id="subtext1">저에게 운세에 대해 물어보세요 !</span><br>
+            <span id="subtext2">(ex. 내 오늘의 운세를 알려줘)</span>
+            <span id="noneani" style="color:#f0f4f5; display: none;">( 답변 중일 때는 메세지를 보내실 수 없어요 )</span> 
+            <div id="loader-message" style="color:#f0f4f5; display: none;">당신의 행운을 들고 오는 중입니다 !<br>잠시만 기다려주세요...</div>
         </div> <!-- title 끝-->
-
-        </div> <!--채팅 컨테이너 끝-->
-        <div id="in" class="input-container" style="display: none;">
-            <input type="text" class="chat-input" id="messageInput" placeholder="메세지를 입력하세요..."  onkeydown="handleKeyPress(event)">
-            <button id="sendButton" class="fa-regular fa-paper-plane" onclick="sendMessage()"></button> 
-        </div>
-
+        
+    </div> <!--채팅 컨테이너 끝-->
+    <div id="in" class="input-container" style="display: none;">
+        <input type="text" class="chat-input" id="messageInput" placeholder="메세지를 입력하세요..."  onkeydown="handleKeyPress(event)">
+        <button id="sendButton" class="fa-regular fa-paper-plane" onclick="sendMessage()"></button> 
+    </div>
+    
+    <a id="icon-link" href="https://kr.freepik.com/icon/chat-bot_7568485#fromView=resource_detail&position=25">icon by Kalashnyk</a>
         <div id="ad">
         <!-- 광고 배너 -->
         <ins class="kakao_ad_area" style="display:none;"

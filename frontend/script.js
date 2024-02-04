@@ -21,6 +21,8 @@ function start() {
   document.getElementById("chat").style.display = "block";
   document.getElementById("ad").style.display = "none";
   document.getElementById("in").style.display = "block";
+  document.getElementById("bot-icon").style.display = "block";
+  document.getElementById("icon-link").style.display = "block";
 
    // 챗 부분 처음에는 숨겨짐
    document.querySelector('.user-bubble').style.display = 'none';

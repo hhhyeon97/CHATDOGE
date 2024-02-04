@@ -120,21 +120,37 @@ body {
   color: #424242;
 }
 
-@media screen and (max-width: 767px) {
+/*모바일 요소 조절 */
+@media screen and (max-width: 768px) {
   .chat-container {
     max-height: 60vh; /* 모바일 기기에서는 뷰포트 높이의 70%로 제한 */
   }
   .input-container {
     bottom: 50px;
   }
+  select {
+    text-align: center; /* 모바일에서도 가운데 정렬을 위한 추가 스타일 */
+  }
+  /*
+  #bot-icon{
+    position: absolute;
+    top: 140px; /* 상단에서의 거리 조정
+  }*/
 }
-
+/*
+@media screen and (max-width: 568px) {
+  .chat-container {
+    margin-left: 20px;
+    margin-right: 20px; /*오른쪽은 안 되는 이유는 ?..
+  }
+}
+*/
 @media screen and (min-width: 768px) {
   .chat-container {
     width: 500px;
   }
   .chat-input {
-    width : 360px;
+    width : 420px;
   }
 }
 
@@ -296,8 +312,8 @@ input[type="date"]::-webkit-calendar-picker-indicator{
   background-color: white;
 }
 
-#hour option{
-  text-align: center;
+#hour {
+  text-align-last: center; /* 모바일 브라우저에 대한 정렬 속성 */
 }
 
 /* select 박스 다른 방법 시도
@@ -331,3 +347,29 @@ input[type="date"]::-webkit-calendar-picker-indicator{
   background-color: white;
 }
 */
+
+/*로봇 아이콘/출처 */
+
+#icon-link{
+  display: none;
+  text-decoration: none;
+  color: #424242;
+  font-size: 15px;
+  margin-right:5px;
+  position:fixed;
+  top: 0;
+  right: 0;
+  font-family: sans-serif;
+}
+
+
+#bot-icon{
+  display: none;
+  width: 85px;
+  position: absolute;
+  top: 130px; /* 상단에서의 거리 조정 */
+  left: 50%; /* 가운데 정렬 */
+  transform: translateX(-50%); /* 가운데 정렬을 위한 조정*/
+  z-index: -1;
+  opacity: 0.8;
+}
