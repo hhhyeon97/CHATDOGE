@@ -18,7 +18,7 @@ const cors = require('cors')
 //app.use(cors())
 
 let corsOptions = {
-  origin: 'https://myfortune.pages.dev',
+  origin: ['https://myfortune.pages.dev','https://myfortune.store'],
   credentials: true
 }
 app.use(cors(corsOptions));
@@ -31,8 +31,13 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 // POST 요청
 app.post('/fortuneTell',  async function (req, res) {
 
-  res.header('Access-Control-Allow-Origin', 'https://myfortune.pages.dev');
+  //res.header('Access-Control-Allow-Origin', 'https://myfortune.pages.dev');
+  //res.header('Access-Control-Allow-Credentials', true);
+  if (corsOptions.origin.includes(req.headers.origin)) {
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+  }
   res.header('Access-Control-Allow-Credentials', true);
+
 
   // 프런트엔드에서 보낸 메세지 출력
   let { myDateTime, userMessages, assistantMessages } = req.body
