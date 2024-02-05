@@ -16,6 +16,15 @@ function start() {
   }
   myDateTime = date + ' ' + hour; // 시간과 날짜를 합침
 
+  
+ // 배너 스크립트를 로드합니다.
+ var script = document.createElement('script');
+ script.src = "//t1.daumcdn.net/kas/static/ba.min.js";
+ document.getElementById("banner2").appendChild(script);
+
+ // 배너를 표시합니다.
+ document.getElementById("banner2").style.display = "block";
+
 
   document.getElementById("intro").style.display = "none";
   document.getElementById("chat").style.display = "block";
@@ -23,6 +32,8 @@ function start() {
   document.getElementById("in").style.display = "block";
   document.getElementById("bot-icon").style.display = "block";
   document.getElementById("icon-link").style.display = "block";
+  
+ 
 
    // 챗 부분 처음에는 숨겨짐
    document.querySelector('.user-bubble').style.display = 'none';

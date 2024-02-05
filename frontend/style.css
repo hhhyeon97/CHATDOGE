@@ -154,6 +154,21 @@ body {
   }
 }
 
+@media screen and (min-width: 992px) {
+
+  .intro-container img{
+    top : -150px;
+  }
+  .input-group {
+   position: relative;
+   bottom : 150px;
+  }
+  .intro-container button{
+      position: relative;
+      bottom: 130px;
+  }
+}
+
 
 /*로딩 메세지로 변경*/
 #loader-message{
@@ -181,9 +196,17 @@ body {
 
 /*광고 배너*/
 #ad {
-  margin-bottom: 20px;
   width: 100%;
 }
+
+/*
+#banner2 {
+  position: fixed; /* 화면에 고정된 위치에 배너가 나타나도록 설정
+  top: 0; 
+  left: 0; /* 배너를 왼쪽 끝에 위치
+  width: 100%; /* 화면 전체의 너비를 차지하도록 설정
+}
+*/
 
 /*=========시작 페이지 컨테이너=========*/
 
@@ -354,12 +377,13 @@ input[type="date"]::-webkit-calendar-picker-indicator{
   display: none;
   text-decoration: none;
   color: #424242;
-  font-size: 15px;
+  font-size: 14px;
   margin-right:5px;
   position:fixed;
-  top: 0;
+  top: 55px;
   right: 0;
   font-family: sans-serif;
+  z-index: 3;
 }
 
 
