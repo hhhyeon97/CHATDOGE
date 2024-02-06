@@ -17,12 +17,12 @@ function start() {
   myDateTime = date + ' ' + hour; // 시간과 날짜를 합침
 
   
- // 배너 스크립트를 로드합니다.
+ // 상단 배너 스크립트를 로드
  var script = document.createElement('script');
- script.src = "//t1.daumcdn.net/kas/static/ba.min.js";
+ script.src = src="//t1.daumcdn.net/kas/static/ba.min.js" ;
  document.getElementById("banner2").appendChild(script);
 
- // 배너를 표시합니다.
+ // 상단 배너 표시 
  document.getElementById("banner2").style.display = "block";
 
 
