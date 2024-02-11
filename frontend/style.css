@@ -31,7 +31,7 @@ body {
   scrollbar-color: #ececec transparent; /* 스크롤바 색상 설정 */
   margin: auto; /* 가운데 정렬을 위한 수정 */
   position: absolute;
-  top: calc(50% - 60px); /* 컨테이너를 화면 중앙에서 위로 50px 이동 */
+  top: calc(50% - 30px); /* 컨테이너를 화면 중앙에서 위로 50px 이동 */
   left: 50%;
   transform: translate(-50%, -50%);
   margin-top:20px;
@@ -83,7 +83,7 @@ body {
   display: flex;
   align-items: center; /* 요소를 수직으로 가운데 정렬 */
   position: absolute;
-  bottom: 70px; /* 원하는 간격에 맞게 조정 */
+  bottom: 50px; /* 원하는 간격에 맞게 조정 */
   left: 50%;
   transform: translateX(-50%);
 }
@@ -126,7 +126,7 @@ body {
     max-height: 60vh; /* 모바일 기기에서는 뷰포트 높이의 70%로 제한 */
   }
   .input-container {
-    bottom: 50px;
+    bottom: 30px;
   }
   select {
     text-align: center; /* 모바일에서도 가운데 정렬을 위한 추가 스타일 */
@@ -166,6 +166,9 @@ body {
   .intro-container button{
       position: relative;
       bottom: 130px;
+  }
+  .chat-container {
+    top : calc(50% - 60px);
   }
 }
 
@@ -380,10 +383,10 @@ input[type="date"]::-webkit-calendar-picker-indicator{
   font-size: 14px;
   margin-right:5px;
   position:fixed;
-  top: 60px;
+  top: 55px;
   right: 0;
   font-family: sans-serif;
-  z-index: 3;
+  z-index: -5;
 }
 
 
