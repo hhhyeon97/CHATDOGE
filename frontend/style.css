@@ -202,15 +202,6 @@ body {
   width: 100%;
 }
 
-/*
-#banner2 {
-  position: fixed; /* 화면에 고정된 위치에 배너가 나타나도록 설정
-  top: 0; 
-  left: 0; /* 배너를 왼쪽 끝에 위치
-  width: 100%; /* 화면 전체의 너비를 차지하도록 설정
-}
-*/
-
 /*=========시작 페이지 컨테이너=========*/
 
 .intro-container {
@@ -320,7 +311,7 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 #hour {
   border: 2px solid gray;
   border-radius: 6px;
-  padding: 10px 30px 10px 10px; /* 오른쪽 패딩을 아이콘 너비만큼 늘리기*/
+  padding: 10px 30px 10px 10px; /* 오른쪽 패딩 아이콘 너비만큼 늘리기*/
   color: black;
   outline: none;
   cursor: pointer;
@@ -331,7 +322,7 @@ input[type="date"]::-webkit-calendar-picker-indicator{
   -webkit-appearance: none; /* iOS와 Safari에서 기본 스타일링 제거 */
   -moz-appearance: none; /* Firefox에서 기본 스타일링 제거 */
   appearance: none; /* 다른 브라우저에서 기본 스타일링 제거 */
-  width: 150px; /* hour 박스의 너비를 조정합니다. */
+  width: 150px; 
   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJ5JREFUSEvtk9sNgCAMRS+b6CY6ipPoJuokruIoehNICKFQTEj8qD++6Dn0Njh0vlxnPkxQTdgi+n9EK4ATwC1sdQAwATikVkpDJnzz8DkjIXz3gkWSlAQEXG8h7+wglsRw/hu/dMCanITfw86LcC7UnINUQihzr8K1grQTvqvgLYJYwmcx83QWmojimjDw6gELC1oFarAJ1FHZDKpRPbjcGRnmtrrsAAAAAElFTkSuQmCC"); /* 화살표 아이콘 추가 */
   background-repeat: no-repeat;
   background-position: right 10px center; /* 화살표 아이콘 위치 조정 */
@@ -341,38 +332,6 @@ input[type="date"]::-webkit-calendar-picker-indicator{
 #hour {
   text-align-last: center; /* 모바일 브라우저에 대한 정렬 속성 */
 }
-
-/* select 박스 다른 방법 시도
-.select-wrapper {
-  position: relative;
-}
-
-.select-wrapper::after {
-  content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJ5JREFUSEvtk9sNgCAMRS+b6CY6ipPoJuokruIoehNICKFQTEj8qD++6Dn0Njh0vlxnPkxQTdgi+n9EK4ATwC1sdQAwATikVkpDJnzz8DkjIXz3gkWSlAQEXG8h7+wglsRw/hu/dMCanITfw86LcC7UnINUQihzr8K1grQTvqvgLYJYwmcx83QWmojimjDw6gELC1oFarAJ1FHZDKpRPbjcGRnmtrrsAAAAAElFTkSuQmCC");
-  position: absolute;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
-  cursor: pointer; 
-}
-
-#hour {
-  border: 2px solid gray;
-  border-radius: 6px;
-  padding: 10px;
-  color: black;
-  outline: none;
-  cursor: pointer;
-  font-size: 15px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  width: 150px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background-color: white;
-}
-*/
 
 /*로봇 아이콘/출처 */
 
