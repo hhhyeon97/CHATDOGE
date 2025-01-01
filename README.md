@@ -25,7 +25,7 @@
 - vscode 
 
 ### 5. 배포
-- 배포 링크 : https://myfortune.store<BR>
+- 배포 링크 : https://myfortune.pages.dev<BR>
 - FRONTEND 배포 : CloudFlare<BR>
 - BACKEND 배포 : AWS Lambda<BR>
 
